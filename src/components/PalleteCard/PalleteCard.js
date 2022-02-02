@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import PalleteStripe from '../PalleteStripe/PalleteStripe.js';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import {faHeart} from "@fortawesome/free-solid-svg-icons";
-import {faRegHeart} from "@fortawesome/free-regular-svg-icons"
 
 export default function PalleteCard(props) {
     const { id, colors, likes} = props.pallete;
