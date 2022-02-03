@@ -8,8 +8,8 @@ export default function PalleteStripe({ color }) {
                 
                 <style jsx>{`
                     article {
-                        width: 100px;
-                        heigth: 100px;
+                        width: 150px;
+                        height: 30px;
                         background-color: ${color};
                     }
 

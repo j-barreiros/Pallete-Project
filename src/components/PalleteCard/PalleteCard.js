@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import PalleteStripe from '../PalleteStripe/PalleteStripe.js';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+
+//Components
+import PalleteBox from '../PalleteBox/PalleteBox.js';
 
 
 export default function PalleteCard(props) {
+    const { addLike, removeLike} = props;
     const { id, colors, likes } = props.pallete;
-    const { addLike, removeLike } = props;
 
     const [gaveLike, setGaveLike] = useState(false);
 
@@ -21,24 +23,31 @@ export default function PalleteCard(props) {
     return (
         <article>
 
-            <div>
-                {colors.map((color, index) =>
-                    <PalleteStripe key={index} color={color} />
-                )}
-            </div>
+            <PalleteBox colors={colors} size='big'/>
 
-            <button onClick={handleLike}>
+
+
+            <button onClick={handleLike} className='likeButton'>
                 <i className='heartIcon'>
                     {gaveLike ? <AiFillHeart/> : <AiOutlineHeart/>}
                 </i>
-                {likes}
+                <p>{likes}</p>
             </button>
-
+            
             <style jsx>{`
+                .likeButton {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    background: transparent;
+                    border: solid pink 2px;
+                    border-radius: 5px;
+                }
+                
                 .heartIcon {
                     font-size: 20px;
                     color: red;
-                    cursor: pointer
                 }
             `}</style>
 
