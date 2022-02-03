@@ -1,5 +1,16 @@
 export default function ColorInfo({colorHex}) {
-    console.log(colorHex)
+
+    function hexToRgb(hexColor) {
+        hexColor = hexColor.slice(1);
+        let convertedColor = [
+            parseInt(hexColor.substring(0,2), 16), 
+            parseInt(hexColor.substring(2,4), 16), 
+            parseInt(hexColor.substring(4,6), 16)
+        ]
+        return `rgb(${convertedColor[0]}, ${convertedColor[1]}, ${convertedColor[2]})`;
+    }
+
+    console.log(hexToRgb(colorHex))
     return (
         <article>
             {/* Circle with the color */}
@@ -7,7 +18,7 @@ export default function ColorInfo({colorHex}) {
             {/* Color hexcode */}
             <p>{colorHex}</p>
             {/* Color rgb */}
-            <p>Rgb</p>
+            <p>{`${hexToRgb(colorHex)}`}</p>
             <style jsx>{`
                 .colorDisplay {
                     width: 50px;
