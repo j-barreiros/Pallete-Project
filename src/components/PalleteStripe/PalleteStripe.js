@@ -1,27 +1,35 @@
 import React, { useState } from 'react';
 
 export default function PalleteStripe({ color }) {
+    const [showCode, setShowColor] = useState(false);
+
     return (
         <>
-            <article>
+            <article onMouseEnter={() => setShowColor(true)} onMouseLeave={() => setShowColor(false)}>
                 <div>{color}</div>
                 
                 <style jsx>{`
                     article {
-                        width: 150px;
-                        height: 30px;
+                        width: 100%;
+                        height: 25%;
+                        display: flex;
+                        align-items: flex-end;
                         background-color: ${color};
+                        cursor: pointer;
                     }
 
                     div {
                         cursor: pointer;
-                        opacity: 0;
-                        background: #444;
-                        transition: opacity 0.2s;
+                        opacity: ${showCode ? '1' : '0'};
+                        background: rgba(3,3,3, 0.3);
+                        transition: all 0.2s;
+                        color: white;
+                        padding: 3px 4px;
+                        border-top-right-radius: 3px;
                     }
 
                     div:hover {
-                        opacity: 1;
+                        background: rgba(3,3,3, 0.5);
                     }
                 `}</style>
             </article>

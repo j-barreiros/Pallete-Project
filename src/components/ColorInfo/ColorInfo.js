@@ -1,5 +1,4 @@
 export default function ColorInfo({colorHex}) {
-
     function hexToRgb(hexColor) {
         hexColor = hexColor.slice(1);
         let convertedColor = [
@@ -10,7 +9,6 @@ export default function ColorInfo({colorHex}) {
         return `rgb(${convertedColor[0]}, ${convertedColor[1]}, ${convertedColor[2]})`;
     }
 
-    console.log(hexToRgb(colorHex))
     return (
         <article>
             {/* Circle with the color */}

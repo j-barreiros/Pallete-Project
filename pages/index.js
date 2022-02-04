@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PalleteCard from '../src/components/PalleteCard/PalleteCard.js'
+import { PalleteContext } from './_app.js';
 
 
 function HomePage() {
+    const allPaletes = useContext(PalleteContext).palleteList;
+
     const [palleteList, setPalleteList] = useState([
         {
             id: '001',
@@ -49,7 +52,7 @@ function HomePage() {
 
     return (
         <>
-            {palleteList.map((pallete) => {
+            {allPaletes.map((pallete) => {
                 return <PalleteCard
                     key={pallete.id}
                     pallete={pallete}

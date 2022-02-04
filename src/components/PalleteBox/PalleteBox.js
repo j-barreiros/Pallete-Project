@@ -3,23 +3,35 @@ import { useEffect, useState } from 'react';
 //Components
 import PalleteStripe from '../PalleteStripe/PalleteStripe.js'
 
-export default function PalleteBox({colors, size}) {
+export default function PalleteBox({ colors, size }) {
 
-    const [width, setWidth] = useState(150);
-    const [height, setHeight] = useState(120);
-    
+    const [width, setWidth] = useState();
+    const [height, setHeight] = useState();
+
     useEffect(() => {
-        if(size == 'small'){
-          setWidth(57);
-          setHeight(60);
-      }
-    },[]);
-    
+        switch(size) {
+            case 'small':
+                setWidth(57);
+                setHeight(60);
+                break;
+            case 'medium':
+                setWidth(150);
+                setHeight(120);
+                break;
+            case 'big':
+                setWidth(300);
+                setHeight(240);
+                break;
+            default:
+                break;
+        }
+    }, []);
+
 
     return (
         <section>
             {colors.map((color, index) => {
-                return <PalleteStripe key={index} color={color}/>
+                return <PalleteStripe key={index} color={color} />
             })}
 
             <style jsx>{`
@@ -28,6 +40,7 @@ export default function PalleteBox({colors, size}) {
                     height: ${height}px;
                     background: red;
                     overflow: hidden;
+                    border-radius: 7px;
                 }
             `}</style>
         </section>

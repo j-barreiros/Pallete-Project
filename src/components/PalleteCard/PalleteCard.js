@@ -25,8 +25,6 @@ export default function PalleteCard(props) {
 
             <PalleteBox colors={colors} size='big'/>
 
-
-
             <button onClick={handleLike} className='likeButton'>
                 <i className='heartIcon'>
                     {gaveLike ? <AiFillHeart/> : <AiOutlineHeart/>}
