@@ -1,31 +1,29 @@
-import React, { useState, useContext } from 'react';
+import { useContext } from "react";
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { PalleteContext } from '../../../pages/_app.js';
 
-//Components
-import PalleteBox from '../PalleteBox/PalleteBox.js';
-import LikeButton from '../LikeButton/LikeButton.js';
+export default function LikeButton({ pallete }) {
 
-
-export default function PalleteCard(props) {
-    const { id, colors} = props.pallete;
-    const {palleteCollection, addToCollection, removeFromCollection, isInTheCollection} = useContext(PalleteContext).collection;
+    const { palleteCollection, addToCollection, removeFromCollection, isInTheCollection } = useContext(PalleteContext).collection;
 
     function handleLike(palleteId) {
-        if(isInTheCollection(palleteId)) {
+        if (isInTheCollection(palleteId)) {
             removeFromCollection(palleteId);
         } else {
-            addToCollection(props.pallete);
+            addToCollection(pallete);
         }
         console.log(palleteCollection)
     }
 
     return (
-        <article>
-
-            <PalleteBox id={id} colors={colors} size='big'/>
-            <LikeButton pallete={props.pallete} />
-            
+        <button
+            className='likeButton'
+            onClick={() => handleLike(pallete.id)}
+        >
+            <i className='heartIcon'>
+                {isInTheCollection(pallete.id) ? <AiFillHeart /> : <AiOutlineHeart />}
+            </i>
+            Salvar
             <style jsx>{`
                 .likeButton {
                     display: flex;
@@ -36,13 +34,12 @@ export default function PalleteCard(props) {
                     border: solid pink 2px;
                     border-radius: 5px;
                 }
-                
+
                 .heartIcon {
                     font-size: 20px;
                     color: red;
                 }
             `}</style>
-
-        </article>
-    )
+        </button>
+    );
 }
