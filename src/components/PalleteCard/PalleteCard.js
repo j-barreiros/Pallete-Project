@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { PalleteContext } from '../../../pages/_app.js';
 
 //Components
 import PalleteBox from '../PalleteBox/PalleteBox.js';
@@ -8,28 +9,27 @@ import PalleteBox from '../PalleteBox/PalleteBox.js';
 export default function PalleteCard(props) {
     const { addLike, removeLike} = props;
     const { id, colors, likes } = props.pallete;
+    const {palleteCollection, addToCollection, removeFromCollection, isInTheCollection} = useContext(PalleteContext).collection;
 
-    const [gaveLike, setGaveLike] = useState(false);
-
-    function handleLike() {
-        if (gaveLike) {
-            removeLike(id);
+    function handleLike(palleteId) {
+        if(isInTheCollection(palleteId)) {
+            removeFromCollection(palleteId);
         } else {
-            addLike(id)
+            addToCollection(props.pallete);
         }
-        setGaveLike(!gaveLike);
+        console.log(palleteCollection)
     }
 
     return (
         <article>
 
-            <PalleteBox colors={colors} size='big'/>
+            <PalleteBox id={id} colors={colors} size='big'/>
 
-            <button onClick={handleLike} className='likeButton'>
+            <button onClick={() => handleLike(id)} className='likeButton'>
                 <i className='heartIcon'>
-                    {gaveLike ? <AiFillHeart/> : <AiOutlineHeart/>}
+                    {isInTheCollection(id) ? <AiFillHeart/> : <AiOutlineHeart/>}
                 </i>
-                <p>{likes}</p>
+                Save
             </button>
             
             <style jsx>{`

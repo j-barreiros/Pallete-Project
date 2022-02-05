@@ -6,7 +6,7 @@ export default function PalleteStripe({ color }) {
     return (
         <>
             <article onMouseEnter={() => setShowColor(true)} onMouseLeave={() => setShowColor(false)}>
-                <div>{color}</div>
+                <div onClick={() => console.log('hello')}>{color}</div>
                 
                 <style jsx>{`
                     article {
@@ -26,6 +26,7 @@ export default function PalleteStripe({ color }) {
                         color: white;
                         padding: 3px 4px;
                         border-top-right-radius: 3px;
+                        z-index: 2;
                     }
 
                     div:hover {

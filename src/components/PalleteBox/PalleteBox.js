@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 //Components
 import PalleteStripe from '../PalleteStripe/PalleteStripe.js'
 
-export default function PalleteBox({ colors, size }) {
+export default function PalleteBox({ id,colors, size }) {
 
     const [width, setWidth] = useState();
     const [height, setHeight] = useState();
+    const router = useRouter();
 
     useEffect(() => {
         switch(size) {
@@ -29,7 +31,7 @@ export default function PalleteBox({ colors, size }) {
 
 
     return (
-        <section>
+        <section onClick={() => router.push(`/${id}`)}>
             {colors.map((color, index) => {
                 return <PalleteStripe key={index} color={color} />
             })}
