@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 
 //Components
 import PalleteStripe from '../PalleteStripe/PalleteStripe.js'
 
-export default function PalleteBox({ id,colors, size }) {
+export default function PalleteBox({ id, colors, size }) {
 
     const [width, setWidth] = useState();
     const [height, setHeight] = useState();
@@ -29,11 +29,17 @@ export default function PalleteBox({ id,colors, size }) {
         }
     }, []);
 
+    function handleClick() {
+        console.log('batata')
+        if(size != 'big') return;
+
+        router.push(`/${id}`);
+    }
 
     return (
-        <section onClick={() => router.push(`/${id}`)}>
+        <section>
             {colors.map((color, index) => {
-                return <PalleteStripe key={index} color={color} />
+                return <PalleteStripe key={index} color={color} handleClick={handleClick}/>
             })}
 
             <style jsx>{`

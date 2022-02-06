@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
-export default function PalleteStripe({ color }) {
+export default function PalleteStripe({ color, handleClick }) {
     const [showCode, setShowColor] = useState(false);
+    const inputRef = useRef();
 
+    function teste() {
+        inputRef.current.select();
+        document.execCommand("Copy")
+        console.log(inputRef.current.value)
+    }
+    
     return (
         <>
-            <article onMouseEnter={() => setShowColor(true)} onMouseLeave={() => setShowColor(false)}>
-                <div onClick={() => console.log('hello')}>{color}</div>
-                
+            <article
+                onMouseEnter={() => setShowColor(true)}
+                onMouseLeave={() => setShowColor(false)}
+                >
+                <input ref={inputRef} value={color} className='copyInput' readOnly></input>
+                <div className='clickLayer' onClick={() => handleClick()}></div>
+                <div className='colorCode' onClick={() => teste()}>{color}</div>
+
                 <style jsx>{`
                     article {
                         width: 100%;
@@ -18,7 +30,14 @@ export default function PalleteStripe({ color }) {
                         cursor: pointer;
                     }
 
-                    div {
+                    .clickLayer {
+                        align-self: flex-start;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .colorCode {
+                        position: absolute;
                         cursor: pointer;
                         opacity: ${showCode ? '1' : '0'};
                         background: rgba(3,3,3, 0.3);
@@ -26,11 +45,15 @@ export default function PalleteStripe({ color }) {
                         color: white;
                         padding: 3px 4px;
                         border-top-right-radius: 3px;
-                        z-index: 2;
                     }
 
-                    div:hover {
+                    .colorCode:hover {
                         background: rgba(3,3,3, 0.5);
+                    }
+
+                    .copyInput {
+                        width: 1px;
+                        opacity: 0;
                     }
                 `}</style>
             </article>
