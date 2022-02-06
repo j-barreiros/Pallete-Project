@@ -1,24 +1,42 @@
 import React, { useState, useRef } from 'react';
 
+import { copyToClipboard } from '../../lib/copyToClipboard';
+
 export default function PalleteStripe({ color, handleClick }) {
     const [showCode, setShowColor] = useState(false);
+    const [isCopiedAlertActive, setIsCopiedAlertActive] = useState(false)
     const inputRef = useRef();
 
-    function teste() {
-        inputRef.current.select();
-        document.execCommand("Copy")
-        console.log(inputRef.current.value)
+    function handleColorCopy() {
+        setIsCopiedAlertActive(true);
+        copyToClipboard(color);
+        setTimeout(() => setIsCopiedAlertActive(false), 1000)
     }
-    
+
     return (
         <>
             <article
                 onMouseEnter={() => setShowColor(true)}
                 onMouseLeave={() => setShowColor(false)}
+            >
+                <input
+                    ref={inputRef}
+                    value={color}
+                    className='copyInput'
+                    readOnly
+                ></input>
+
+                <div
+                    className='clickLayer'
+                    onClick={() => handleClick()}
+                ></div>
+
+                <div
+                    className='colorCode'
+                    onClick={() => handleColorCopy()}
                 >
-                <input ref={inputRef} value={color} className='copyInput' readOnly></input>
-                <div className='clickLayer' onClick={() => handleClick()}></div>
-                <div className='colorCode' onClick={() => teste()}>{color}</div>
+                    {isCopiedAlertActive ? 'Copied' : color}
+                </div>
 
                 <style jsx>{`
                     article {

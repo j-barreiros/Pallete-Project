@@ -8,7 +8,7 @@ function HomePage() {
     const setPalleteList = useContext(PalleteContext).setPalleteList;
 
     return (
-        <>
+        <section className='palleteDisplay'>
             {palleteList.map((pallete) => {
                 return (
                     <PalleteCard
@@ -18,7 +18,14 @@ function HomePage() {
                 )
             }
             )}
-        </>
+
+            <style jsx>{`
+                .palleteDisplay {
+                    display: flex;
+                }
+            `}</style>
+
+        </section>
     )
 }
 
