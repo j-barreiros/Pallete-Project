@@ -23,7 +23,7 @@ export default function LikeButton({ pallete }) {
             <i className='heartIcon'>
                 {isInTheCollection(pallete.id) ? <AiFillHeart /> : <AiOutlineHeart />}
             </i>
-            Salvar
+            Save
             <style jsx>{`
                 .likeButton {
                     display: flex;

@@ -22,6 +22,7 @@ function HomePage() {
             <style jsx>{`
                 .palleteDisplay {
                     display: flex;
+                    justify-content: space-evenly;
                 }
             `}</style>
 

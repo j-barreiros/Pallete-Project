@@ -23,7 +23,7 @@ export default function PalleteCard(props) {
     return (
         <article>
 
-            <PalleteBox id={id} colors={colors} size='big'/>
+            <PalleteBox id={id} colors={colors} size='medium'/>
             <LikeButton pallete={props.pallete} />
             
             <style jsx>{`

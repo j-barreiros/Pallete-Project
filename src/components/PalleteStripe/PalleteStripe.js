@@ -5,7 +5,6 @@ import { copyToClipboard } from '../../lib/copyToClipboard';
 export default function PalleteStripe({ color, handleClick }) {
     const [showCode, setShowColor] = useState(false);
     const [isCopiedAlertActive, setIsCopiedAlertActive] = useState(false)
-    const inputRef = useRef();
 
     function handleColorCopy() {
         setIsCopiedAlertActive(true);
@@ -14,31 +13,28 @@ export default function PalleteStripe({ color, handleClick }) {
     }
 
     return (
-        <>
-            <article
-                onMouseEnter={() => setShowColor(true)}
-                onMouseLeave={() => setShowColor(false)}
+        <article
+            className='teste'
+            onMouseEnter={() => setShowColor(true)}
+            onMouseLeave={() => setShowColor(false)}
+        >
+            <div
+                className='clickLayer'
+                onClick={() => handleClick()}
+            ></div>
+
+            <div
+                className='colorCode'
+                onClick={() => handleColorCopy()}
             >
-                <input
-                    ref={inputRef}
-                    value={color}
-                    className='copyInput'
-                    readOnly
-                ></input>
+                {isCopiedAlertActive ?
+                    'Copied'
+                    :
+                    color
+                }
+            </div>
 
-                <div
-                    className='clickLayer'
-                    onClick={() => handleClick()}
-                ></div>
-
-                <div
-                    className='colorCode'
-                    onClick={() => handleColorCopy()}
-                >
-                    {isCopiedAlertActive ? 'Copied' : color}
-                </div>
-
-                <style jsx>{`
+            <style jsx>{`
                     article {
                         width: 100%;
                         height: 25%;
@@ -58,15 +54,15 @@ export default function PalleteStripe({ color, handleClick }) {
                         position: absolute;
                         cursor: pointer;
                         opacity: ${showCode ? '1' : '0'};
-                        background: rgba(3,3,3, 0.3);
+                        background: rgba(3,3,3, ${isCopiedAlertActive ? '0.7' : '0.3'});
                         transition: all 0.2s;
                         color: white;
-                        padding: 3px 4px;
+                        padding: 3px 7px;
                         border-top-right-radius: 3px;
                     }
 
                     .colorCode:hover {
-                        background: rgba(3,3,3, 0.5);
+                        background: rgba(3,3,3, ${isCopiedAlertActive ? '0.7' : '0.5'});
                     }
 
                     .copyInput {
@@ -74,7 +70,6 @@ export default function PalleteStripe({ color, handleClick }) {
                         opacity: 0;
                     }
                 `}</style>
-            </article>
-        </>
+        </article>
     )
 }

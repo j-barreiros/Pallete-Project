@@ -1,8 +1,22 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 
 export const PalleteContext = React.createContext();
 
-export default function App({Component, pageProps}) {
+function GlobalStyle() {
+    return (
+        <style jsx global>{`
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+    `}</style>
+    )
+}
+
+export default function App({ Component, pageProps }) {
     const [palleteList, setPalleteList] = useState([
         {
             id: '0',
@@ -54,6 +68,7 @@ export default function App({Component, pageProps}) {
             },
         }}>
             <Component {...pageProps} />
+            <GlobalStyle />
         </PalleteContext.Provider>
     )
 }

@@ -17,11 +17,28 @@ export default function colorPage() {
         return <h1>Loading</h1>
     } else {
         return (
-            <>
-                <PalleteBox colors={myPallete.colors} size='big' />
-                {myPallete.colors.map((color, index) => <ColorInfo key={index} colorHex={color} />)}
-                <LikeButton pallete={myPallete}></LikeButton>
-            </>
+            <main>
+                <section className="boxSection">
+                    <PalleteBox colors={myPallete.colors} size='big' />
+                    <LikeButton pallete={myPallete}></LikeButton>
+                </section>
+                <section className="infoSection">
+                    {myPallete.colors.map((color, index) => <ColorInfo key={index} colorHex={color} />)}
+                </section>
+
+                <style jsx>{`
+                    .boxSection {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    .infoSection {
+                        display: flex;
+                        justify-content: space-evenly;
+                    }
+                `}</style>
+            </main>
         )
     }
 }
