@@ -17,7 +17,6 @@ export default function PalleteCard(props) {
         } else {
             addToCollection(props.pallete);
         }
-        console.log(palleteCollection)
     }
 
     return (
@@ -25,6 +24,7 @@ export default function PalleteCard(props) {
 
             <PalleteBox id={id} colors={colors} size='medium'/>
             <LikeButton pallete={props.pallete} />
+            <li className="navItem">color</li>
             
             <style jsx>{`
                 .likeButton {
