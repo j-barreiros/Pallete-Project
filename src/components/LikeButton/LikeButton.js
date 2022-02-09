@@ -23,21 +23,31 @@ export default function LikeButton({ pallete }) {
             <i className='heartIcon'>
                 {isInTheCollection(pallete.id) ? <AiFillHeart /> : <AiOutlineHeart />}
             </i>
-            Save
+            <p>Save</p>
             <style jsx>{`
                 .likeButton {
+                    width: 30%;
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    background: transparent;
-                    border: solid pink 2px;
+                    justify-content: space-evenly;
+                    font-size: 14px;
+                    padding: 0px 10px;
+                    background: ${isInTheCollection(pallete.id) ? '#F3F3F3' : 'transparent'};
+                    border: solid #F3F3F3 1px;
                     border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.2s;
+                }
+
+                .likeButton:hover {
+                    background: ${isInTheCollection(pallete.id) ? '#F3F3F3' : 'transparent'};;
                 }
 
                 .heartIcon {
+                    margin-top: 5px;
                     font-size: 20px;
-                    color: red;
+                    color: #444;
+                    margin-right: 4px;
                 }
             `}</style>
         </button>

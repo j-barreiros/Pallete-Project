@@ -26,21 +26,20 @@ function HomePage() {
                 )}
             </section>
 
-            <SideBar />
-
             <style jsx>{`
                 main {
-                    background: #ccc;
                     height: 100vh;
-                    display: grid;
-                    grid-template-columns: 1fr 2.5fr 1fr;
+                    position: relative;
+                    display: flex;
                 }
                 
                 .palleteDisplay {
-                    display: flex;
-                    justify-content: space-evenly;
+                  width: 100%;
+                  display: grid;
+                  grid-template-columns: repeat(4, 1fr);
+                  margin-left: 200px;
                 }
-            `}</style>
+                `}</style>
         </main>
     )
 }

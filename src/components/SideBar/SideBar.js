@@ -3,16 +3,23 @@ import { useRouter } from "next/router"
 function NavItem({ title, path }) {
     return (
         <div
+            href=""
             className="navItem"
             onClick={() => console.log({ title })}
         >
-            {title}
+            <p>{title}</p>
 
             <style jsx>{`
                 .navItem {
-                    display: flex;
-                    justify-content: center;
-                    background: #666;
+                    color: #626262;
+                    font-size: 25px;
+                    cursor: pointer;
+                    background: gray;
+                    margin: 10px;
+                }
+
+                .navItem:hover {
+                    color: #323232;
                 }
             `}</style>
         </div>
@@ -24,11 +31,15 @@ function NavItem({ title, path }) {
 export default function SideBar() {
     const navItems = [
         {
-            title: "All Palletes",
+            title: "New",
             path: "./"
         },
         {
-            title: "My Collection",
+            title: "Popular",
+            path: "./"
+        },
+        {
+            title: "Collection",
             path: "./"
         },
         {
@@ -38,12 +49,24 @@ export default function SideBar() {
     ]
 
     return (
-        <section>
+        <section className='sideBar'>
             <nav>
                 {navItems.map((item, index) => <NavItem key={index} title={item.title} path={item.path} />)}
             </nav>
 
             <style jsx>{`
+                .sideBar {
+                    width: 200px;
+                    height: 100vh;
+                    background: red;
+                    position: fixed;
+                }
+
+                .sideBar nav {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
             
             `}</style>
         </section>

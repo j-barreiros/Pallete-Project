@@ -8,11 +8,11 @@ import LikeButton from '../LikeButton/LikeButton.js';
 
 
 export default function PalleteCard(props) {
-    const { id, colors} = props.pallete;
-    const {palleteCollection, addToCollection, removeFromCollection, isInTheCollection} = useContext(PalleteContext).collection;
+    const { id, colors } = props.pallete;
+    const { palleteCollection, addToCollection, removeFromCollection, isInTheCollection } = useContext(PalleteContext).collection;
 
     function handleLike(palleteId) {
-        if(isInTheCollection(palleteId)) {
+        if (isInTheCollection(palleteId)) {
             removeFromCollection(palleteId);
         } else {
             addToCollection(props.pallete);
@@ -20,26 +20,31 @@ export default function PalleteCard(props) {
     }
 
     return (
-        <article>
+        <article className='palleteCard'>
 
-            <PalleteBox id={id} colors={colors} size='medium'/>
-            <LikeButton pallete={props.pallete} />
-            <li className="navItem">color</li>
-            
+            <PalleteBox id={id} colors={colors} size='medium' />
+            <div className='palleteInfo'>
+                <LikeButton pallete={props.pallete} />
+                <p>5 days</p>
+            </div>
+
             <style jsx>{`
-                .likeButton {
+                .palleteCard {
                     display: flex;
-                    align-items: center;
+                    flex-direction: column;
                     justify-content: center;
-                    cursor: pointer;
-                    background: transparent;
-                    border: solid pink 2px;
-                    border-radius: 5px;
+                    align-items: center;    
                 }
                 
-                .heartIcon {
-                    font-size: 20px;
-                    color: red;
+                .palleteInfo {
+                    width: 90%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .palleteInfo p {
+                    display: inline;
                 }
             `}</style>
 

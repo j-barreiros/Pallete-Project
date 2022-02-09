@@ -8,9 +8,15 @@ function GlobalStyle() {
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
+        a {
+            text-decoration: none;
+        }
+
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: Helvetica, Arial, sans-serif;
         }
     `}</style>
     )
@@ -38,6 +44,68 @@ export default function App({ Component, pageProps }) {
             colors: ['#08D9D6', '#252A34', '#FF2E63', '#EAEAEA'],
             likes: '12'
         },
+        {
+            id: '4',
+            colors: ['#E3FDFD','#CBF1F5','#A6E3E9','#71C9CE'],
+            likes: '12'
+        },
+        {
+            id: '5',
+            colors: ['#FFC7C7','#FFE2E2','#F6F6F6','#8785A2'],
+            likes: '12'
+        },
+        {
+            id: '6',
+            colors: ['#A8D8EA','#AA96DA','#FCBAD3','#FFFFD2'],
+            likes: '12'
+        },
+        {
+            id: '7',
+            colors: ['#364F6B','#3FC1C9','#F5F5F5','#FC5185'],
+            likes: '12'
+        },
+        {
+            id: '8',
+            colors: ['#F9F7F7','#DBE2EF','#3F72AF','#112D4E'],
+            likes: '12'
+        },
+        {
+            id: '9',
+            colors: ['#FFB6B9','#FAE3D9','#BBDED6','#61C0BF'],
+            likes: '12'
+        },
+        {
+            id: '10',
+            colors: ['#DEFCF9','#CADEFC','#C3BEF0','#CCA8E9'],
+            likes: '12'
+        },
+        {
+            id: '11',
+            colors: ['#E4F9F5','#30E3CA','#11999E','#40514E'],
+            likes: '12'
+        },
+        {
+            id: '12',
+            colors: ['#2B2E4A','#E84545','#903749','#53354A'],
+            likes: '12'
+        },
+        {
+            id: '13',
+            colors: ['#F67280','#C06C84','#6C5B7B','#355C7D'],
+            likes: '12'
+        },
+        {
+            id: '14',
+            colors: ['#F4EEFF','#DCD6F7','#A6B1E1','#424874'],
+            likes: '12'
+        },
+        {
+            id: '15',
+            colors: ['#FFCFDF','#FEFDCA','#E0F9B5','#A5DEE5'],
+            likes: '12'
+        },
+        
+        
     ])
 
     const [palleteCollection, setPalleteCollection] = useState([]);
