@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { PalleteContext } from '../../../pages/_app.js';
 
 //Components

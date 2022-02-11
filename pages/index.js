@@ -37,7 +37,7 @@ function HomePage() {
                   width: 100%;
                   display: grid;
                   grid-template-columns: repeat(4, 1fr);
-                  margin-left: 200px;
+                  margin-left: 193px;
                 }
                 `}</style>
         </main>
