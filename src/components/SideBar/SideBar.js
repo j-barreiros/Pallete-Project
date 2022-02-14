@@ -58,9 +58,8 @@ function NavItem({ text, path, active }) {
                 }
 
                 .navItem i {
+                    height: 5px;
                     font-size: 25px;
-                    margin: 0px;
-                    padding: 0px;
                 }
                 
                 .active {
