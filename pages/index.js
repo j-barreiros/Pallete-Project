@@ -34,10 +34,30 @@ function HomePage() {
                 }
                 
                 .palleteDisplay {
-                  width: 100%;
-                  display: grid;
-                  grid-template-columns: repeat(4, 1fr);
-                  margin-left: 193px;
+                    margin-top: 20px;
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-row-gap: 20px;
+                    margin-left: 193px;
+                }
+
+                @media screen and (max-width: 1200px) {
+                    .palleteDisplay {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+
+                @media screen and (max-width: 940px) {
+                    .palleteDisplay {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media screen and (max-width: 700px) {
+                    .palleteDisplay {
+                        grid-template-columns: 1fr;
+                    }
                 }
                 `}</style>
         </main>
