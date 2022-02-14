@@ -33,7 +33,7 @@ export default function LikeButton({ pallete }) {
                     font-size: 14px;
                     padding: 0px 10px;
                     background: ${isInTheCollection(pallete.id) ? '#F3F3F3' : 'transparent'};
-                    border: solid #F3F3F3 1px;
+                    border: solid #E0E0E0 1px;
                     border-radius: 5px;
                     cursor: pointer;
                     transition: background-color 0.2s;

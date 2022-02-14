@@ -19,31 +19,39 @@ export default function PalleteCard(props) {
     }
 
     return (
-        <article className='palleteCard'>
+        <article className='gridItem'>
 
-            <PalleteBox id={id} colors={colors} size='medium' />
-            <div className='palleteInfo'>
-                <LikeButton pallete={props.pallete} />
-                <p>5 days</p>
+            <div className='palleteCard'>
+                <PalleteBox id={id} colors={colors} size='medium' />
+                <div className='palleteFooter'>
+                    <LikeButton pallete={props.pallete} />
+                    <p>5 days</p>
+                </div>
             </div>
 
             <style jsx>{`
-                .palleteCard {
+                .gridItem {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;    
                 }
                 
-                .palleteInfo {
-                    width: 90%;
+                .palleteCard {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .palleteFooter {
+                    width: 100%;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                 }
 
-                .palleteInfo p {
-                    display: inline;
+                .palleteFooter p {
+                    font-size: 13px;
                 }
             `}</style>
 
