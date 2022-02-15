@@ -7,6 +7,7 @@ import PalleteBox from '../src/components/PalleteBox/PalleteBox.js';
 import ColorInfo from '../src/components/ColorInfo/ColorInfo.js'
 import LikeButton from '../src/components/LikeButton/LikeButton.js'
 import SideBar from "../src/components/SideBar/SideBar.js";
+import CollectionBar from "../src/components/CollectionBar/CollectionBar.js";
 
 export default function colorPage() {
 
@@ -33,6 +34,8 @@ export default function colorPage() {
                         {myPallete.colors.map((color, index) => <ColorInfo key={index} colorHex={color} />)}
                     </section>
                 </section>
+
+                <CollectionBar/>
 
                 <style jsx>{`
                     main {
