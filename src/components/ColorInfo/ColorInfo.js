@@ -9,6 +9,7 @@ function textToCopy(props) {
 }
 
 export default function ColorInfo({colorHex}) {
+
     function hexToRgb(hexColor) {
         hexColor = hexColor.slice(1);
         let convertedColor = [

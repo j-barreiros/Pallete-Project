@@ -27,11 +27,7 @@ export default function PalleteStripe({ color, handleClick }) {
                 className='colorCode'
                 onClick={() => handleColorCopy()}
             >
-                {isCopiedAlertActive ?
-                    'Copied'
-                    :
-                    color
-                }
+                {isCopiedAlertActive ? 'Copied' : color }
             </div>
 
             <style jsx>{`

@@ -19,12 +19,15 @@ export default function colorPage() {
     } else {
         return (
             <main>
-                <SideBar/>
+                <SideBar />
 
                 <section className='colorSection'>
                     <section className="boxSection">
-                        <PalleteBox colors={myPallete.colors} size='big' />
-                        <LikeButton pallete={myPallete}></LikeButton>
+                            <PalleteBox colors={myPallete.colors} size='big' />
+                        <div className='palleteFooter'>
+                            <LikeButton pallete={myPallete}></LikeButton>
+                            <p>5 weeks</p>
+                        </div>
                     </section>
                     <section className="infoSection">
                         {myPallete.colors.map((color, index) => <ColorInfo key={index} colorHex={color} />)}
@@ -35,21 +38,29 @@ export default function colorPage() {
                     main {
                         display: flex;
                     }
+
                     .colorSection {
                         padding-top: 30px;
                         width: 100%;
                         display: flex;
                         flex-direction: column;
+                        align-items: center;
                         margin-left: 193px;
                     }
 
                     .boxSection {
                         display: flex;
                         flex-direction: column;
+                    }
+
+                    .palleteFooter {
+                        display: flex;
+                        justify-content: space-between;
                         align-items: center;
                     }
 
                     .infoSection {
+                        width: 100%;
                         display: grid;
                         grid-template-columns: repeat(4, 1fr);
                         margin: 30px 160px;
