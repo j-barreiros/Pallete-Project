@@ -64,6 +64,7 @@ function NavItem({ text, path, active }) {
                 
                 .active {
                     background: #eee;
+                    color: black;
                 }
             `}</style>
         </div>
@@ -81,9 +82,7 @@ export default function SideBar() {
             <h1>Pallete Project</h1>
             <nav>
                 <NavItem text='New' path='./' active={activeMenuItem} />
-                <NavItem text='Popular' path='./' active={activeMenuItem} />
                 <NavItem text='Collection' path='./' active={activeMenuItem} />
-                <NavItem text='Create' path='./' active={activeMenuItem} />
             </nav>
 
             <style jsx>{`

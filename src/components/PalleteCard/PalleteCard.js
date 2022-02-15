@@ -25,7 +25,7 @@ export default function PalleteCard(props) {
                 <PalleteBox id={id} colors={colors} size='medium' />
                 <div className='palleteFooter'>
                     <LikeButton pallete={props.pallete} />
-                    <p>5 days</p>
+                    <p>{`#${id}`}</p>
                 </div>
             </div>
 
@@ -41,6 +41,14 @@ export default function PalleteCard(props) {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    padding: 8px 5px 7px 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 7px;
+                    transition: box-shadow 1s;
+                }
+
+                .palleteCard:hover {
+                    box-shadow: 0px 0px 10px #ccc;
                 }
 
                 .palleteFooter {

@@ -21,7 +21,7 @@ export default function PalleteBox({ id, colors, size }) {
                 setHeight(200);
                 break;
             case 'big':
-                setWidth(450);
+                setWidth(390);
                 setHeight(350);
             default:
                 break;

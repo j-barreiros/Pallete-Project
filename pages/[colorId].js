@@ -26,7 +26,7 @@ export default function colorPage() {
                             <PalleteBox colors={myPallete.colors} size='big' />
                         <div className='palleteFooter'>
                             <LikeButton pallete={myPallete}></LikeButton>
-                            <p>5 weeks</p>
+                            <p>{`#${colorId}`}</p>
                         </div>
                     </section>
                     <section className="infoSection">
@@ -77,6 +77,7 @@ export default function colorPage() {
                             grid-template-columns: repeat(2, 1fr);
                             margin: 30px 20px;
                         }
+
                     }
 
                     @media screen and (max-width: 700px) {
