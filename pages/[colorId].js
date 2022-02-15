@@ -4,8 +4,9 @@ import { PalleteContext } from "./_app.js";
 
 //Components 
 import PalleteBox from '../src/components/PalleteBox/PalleteBox.js';
-import ColorInfo from '../src/components/ColorInfo/ColorInfo'
-import LikeButton from '../src/components/LikeButton/LikeButton'
+import ColorInfo from '../src/components/ColorInfo/ColorInfo.js'
+import LikeButton from '../src/components/LikeButton/LikeButton.js'
+import SideBar from "../src/components/SideBar/SideBar.js";
 
 export default function colorPage() {
 
@@ -18,15 +19,30 @@ export default function colorPage() {
     } else {
         return (
             <main>
-                <section className="boxSection">
-                    <PalleteBox colors={myPallete.colors} size='big' />
-                    <LikeButton pallete={myPallete}></LikeButton>
-                </section>
-                <section className="infoSection">
-                    {myPallete.colors.map((color, index) => <ColorInfo key={index} colorHex={color} />)}
+                <SideBar/>
+
+                <section className='colorSection'>
+                    <section className="boxSection">
+                        <PalleteBox colors={myPallete.colors} size='big' />
+                        <LikeButton pallete={myPallete}></LikeButton>
+                    </section>
+                    <section className="infoSection">
+                        {myPallete.colors.map((color, index) => <ColorInfo key={index} colorHex={color} />)}
+                    </section>
                 </section>
 
                 <style jsx>{`
+                    main {
+                        display: flex;
+                    }
+                    .colorSection {
+                        padding-top: 30px;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 193px;
+                    }
+
                     .boxSection {
                         display: flex;
                         flex-direction: column;
@@ -34,8 +50,29 @@ export default function colorPage() {
                     }
 
                     .infoSection {
-                        display: flex;
-                        justify-content: space-evenly;
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        margin: 30px 160px;
+                    }
+
+                    @media screen and (max-width: 1200px) {
+                        .infoSection {
+                            margin: 30px 20px;
+                        }
+                    }
+
+                    @media screen and (max-width: 850px) {
+                        .infoSection {
+                            grid-template-columns: repeat(2, 1fr);
+                            margin: 30px 20px;
+                        }
+                    }
+
+                    @media screen and (max-width: 700px) {
+                        .infoSection {
+                            grid-template-columns: 1fr;
+                            margin: 30px 20px;
+                        }
                     }
                 `}</style>
             </main>
