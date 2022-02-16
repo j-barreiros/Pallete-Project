@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 
 import { copyToClipboard } from '../../lib/copyToClipboard';
 
-export default function PalleteStripe({ color, handleClick }) {
+export default function PalleteStripe({ color, size, handleClick }) {
     const [showCode, setShowColor] = useState(false);
     const [isCopiedAlertActive, setIsCopiedAlertActive] = useState(false)
 
@@ -24,7 +24,7 @@ export default function PalleteStripe({ color, handleClick }) {
             ></div>
 
             <div
-                className='colorCode'
+                className={`colorCode ${size == 'small' ? 'colorCodeDisabled' : ''}`}
                 onClick={() => handleColorCopy()}
             >
                 {isCopiedAlertActive ? 'Copied' : color }
@@ -37,13 +37,13 @@ export default function PalleteStripe({ color, handleClick }) {
                         display: flex;
                         align-items: flex-end;
                         background-color: ${color};
-                        cursor: pointer;
                     }
-
+                    
                     .clickLayer {
                         align-self: flex-start;
                         width: 100%;
                         height: 100%;
+                        cursor: ${size != 'big' ? 'pointer' : 'default'};
                     }
 
                     .colorCode {
@@ -56,10 +56,14 @@ export default function PalleteStripe({ color, handleClick }) {
                         padding: 3px 7px;
                         border-top-right-radius: 3px;
                     }
-
+                    
                     .colorCode:hover {
                         background: rgba(3,3,3, ${isCopiedAlertActive ? '0.7' : '0.5'});
                     }
+                    .colorCodeDisabled {
+                        display: none;
+                    }
+
 
                     .copyInput {
                         width: 1px;
