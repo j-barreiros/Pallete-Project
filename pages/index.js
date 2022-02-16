@@ -4,6 +4,7 @@ import PalleteCard from '../src/components/PalleteCard/PalleteCard.js'
 //Components
 import { PalleteContext } from './_app.js';
 import SideBar from '../src/components/SideBar/SideBar.js';
+import CollectionBar from '../src/components/CollectionBar/CollectionBar.js';
 
 function HomePage() {
     const { palleteList } = useContext(PalleteContext).pallete;
@@ -26,6 +27,8 @@ function HomePage() {
                 )}
             </section>
 
+            <CollectionBar />
+
             <style jsx>{`
                 main {
                     height: 100vh;
@@ -34,15 +37,16 @@ function HomePage() {
                 }
                 
                 .palleteDisplay {
-                    margin-top: 20px;
                     width: 100%;
+                    margin-top: 20px;
+                    margin-left: 193px;
+                    margin-right: 250px;
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
                     grid-row-gap: 20px;
-                    margin-left: 193px;
                 }
 
-                @media screen and (max-width: 1200px) {
+                @media screen and (max-width: 1430px) {
                     .palleteDisplay {
                         grid-template-columns: repeat(3, 1fr);
                     }
