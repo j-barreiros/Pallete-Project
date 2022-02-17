@@ -33,7 +33,6 @@ export default function PalleteCard(props) {
                 .gridItem {
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
                     align-items: center;    
                 }
                 
