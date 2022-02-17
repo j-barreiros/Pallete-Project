@@ -2,26 +2,21 @@ import { useRouter } from "next/router"
 import { useState } from "react";
 
 //Icons
-import { AiFillPlusCircle, AiOutlinePlusCircle, AiFillFire, AiOutlineFire, AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsBookmarkHeart, BsBookmarkHeartFill } from 'react-icons/bs';
 
 function NavItem({ text, path, active }) {
 
     const isActive = (active == text);
+    const router = useRouter();
 
     function getMenuIcon(itemText) {
         switch (itemText) {
-            case 'New':
+            case 'Palletes':
                 return isActive ? <AiFillStar /> : <AiOutlineStar />;
-                break;
-            case 'Popular':
-                return isActive ? <AiFillFire /> : <AiOutlineFire />;
                 break;
             case 'Collection':
                 return isActive ? <BsBookmarkHeartFill /> : <BsBookmarkHeart />;
-                break;
-            case 'Create':
-                return isActive ? <AiFillPlusCircle /> : <AiOutlinePlusCircle />;
                 break;
             default:
                 break;
@@ -31,7 +26,7 @@ function NavItem({ text, path, active }) {
     return (
         <div
             className={`navItem ${active == text ? 'active' : ''}`}
-            onClick={() => console.log({ text })}
+            onClick={() => router.replace(path)}
         >
             <i>{getMenuIcon(text)}</i>
             <p>{text}</p>
@@ -73,16 +68,16 @@ function NavItem({ text, path, active }) {
     )
 }
 
-export default function SideBar() {
+export default function SideBar({activeMenuItem = ''}) {
 
-    const [activeMenuItem, setActiveMenuItem] = useState('New')
+    //const [activeMenuItem, setActiveMenuItem] = useState('Palletes')
 
     return (
         <section className='sideBar'>
             <h1>Pallete Project</h1>
             <nav>
-                <NavItem text='New' path='./' active={activeMenuItem} />
-                <NavItem text='Collection' path='./' active={activeMenuItem} />
+                <NavItem text='Palletes' path='./' active={activeMenuItem} />
+                <NavItem text='Collection' path='./collection' active={activeMenuItem} />
             </nav>
 
             <style jsx>{`
