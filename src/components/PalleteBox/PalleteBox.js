@@ -9,29 +9,24 @@ import PalleteStripe from '../PalleteStripe/PalleteStripe.js'
 
 export default function PalleteBox({ id, colors, size }) {
 
-    const [width, setWidth] = useState(230);
-    const [height, setHeight] = useState(200);
+    //const [width, setWidth] = useState(230);
+    //const [height, setHeight] = useState(200);
     const [showRemoveButton, setShowRemoveButton] = useState(false);
     const router = useRouter();
     const removeFromCollection = useContext(PalleteContext).collection.removeFromCollection;
 
-    useEffect(() => {
-        switch (size) {
+    const [ width, height] = defineDimension(size);
+
+    function defineDimension(boxSize) {
+        switch (boxSize) {
             case 'small':
-                setWidth(47);
-                setHeight(47);
-                break;
+                return [47, 47];
             case 'medium':
-                setWidth(230);
-                setHeight(200);
-                break;
-            case 'big':
-                setWidth(390);
-                setHeight(350);
-            default:
-                break;
+                return [230, 200];
+            default: //big
+                return [390, 350];      
         }
-    }, []);
+    }
 
     function handleClick() {
         if (size == 'big') return;
@@ -50,13 +45,13 @@ export default function PalleteBox({ id, colors, size }) {
                 x
             </a>
             {colors.map((color, index) => {
-                return <PalleteStripe 
-                            className="stripe" 
-                            key={index} 
-                            color={color} 
-                            size={size} 
-                            handleClick={handleClick} 
-                        />
+                return <PalleteStripe
+                    className="stripe"
+                    key={index}
+                    color={color}
+                    size={size}
+                    handleClick={handleClick}
+                />
             })}
 
 
