@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 export const PalleteContext = React.createContext();
 
@@ -104,7 +104,46 @@ export default function App({ Component, pageProps }) {
             colors: ['#FFCFDF','#FEFDCA','#E0F9B5','#A5DEE5'],
             likes: '12'
         },
-        
+        {
+            id: '16',
+            colors: ['#E23E57','#88304E','#522546','#311D3F'],
+            likes: '12'
+        },
+        {
+            id: '17',
+            colors: ['#1B262C','#0F4C75','#3282B8','#BBE1FA'],
+            likes: '12'
+        },
+        {
+            id: '18',
+            colors: ['#212121','#323232','#0D7377','#14FFEC'],
+            likes: '12'
+        },
+        {
+            id: '19',
+            colors: ['#FFC8C8','#FF9999','#444F5A','#3E4149'],
+            likes: '12'
+        },
+        {
+            id: '20',
+            colors: ['#48466D','#3D84A8','#46CDCF','#ABEDD8'],
+            likes: '12'
+        },
+        {
+            id: '21',
+            colors: ['#2D4059','#EA5455','#F07B3F','#FFD460'],
+            likes: '12'
+        },
+        {
+            id: '22',
+            colors: ['#F0F5F9','#C9D6DF','#52616B','#1E2022'],
+            likes: '12'
+        },
+        {
+            id: '23',
+            colors: ['#3EC1D3','#F6F7D7','#FF9A00','#FF165D'],
+            likes: '12'
+        },
         
     ])
 
@@ -121,6 +160,25 @@ export default function App({ Component, pageProps }) {
     function isInTheCollection(palleteId) {
         return palleteCollection.find(pallete => pallete.id == palleteId);
     }
+
+    function getCollectionFromLocalStorage() {
+        let localStorageCollection = localStorage.getItem('collection');
+        
+        if(localStorageCollection){
+            localStorageCollection = JSON.parse(localStorageCollection);
+            setPalleteCollection(localStorageCollection);
+        };
+        
+    }
+
+    useEffect(() => {
+        getCollectionFromLocalStorage();
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('collection', JSON.stringify(palleteCollection));
+    }, [palleteCollection])
+    
 
     return (
         <PalleteContext.Provider value={{
