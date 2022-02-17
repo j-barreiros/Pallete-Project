@@ -24,7 +24,7 @@ export default function colorPage() {
 
                 <section className='colorSection'>
                     <section className="boxSection">
-                            <PalleteBox colors={myPallete.colors} size='big' />
+                        <PalleteBox colors={myPallete.colors} size='big' />
                         <div className='palleteFooter'>
                             <LikeButton pallete={myPallete}></LikeButton>
                             <p>{`#${colorId}`}</p>
@@ -35,7 +35,7 @@ export default function colorPage() {
                     </section>
                 </section>
 
-                <CollectionBar/>
+                <CollectionBar />
 
                 <style jsx>{`
                     main {
@@ -49,6 +49,7 @@ export default function colorPage() {
                         flex-direction: column;
                         align-items: center;
                         margin-left: 193px;
+                        margin-right: 250px;
                     }
 
                     .boxSection {
@@ -63,7 +64,7 @@ export default function colorPage() {
                     }
 
                     .infoSection {
-                        width: 100%;
+                        width: 80%;
                         display: grid;
                         grid-template-columns: repeat(4, 1fr);
                         margin: 30px 160px;
@@ -75,18 +76,37 @@ export default function colorPage() {
                         }
                     }
 
+                
+                    @media screen and (max-width: 1100px) {
+                        .colorSection {
+                            margin-right: 0px;
+                        }
+
+                        main :global(.collectionBar) {
+                            display: none;
+                        }
+
+                    }
+
                     @media screen and (max-width: 850px) {
                         .infoSection {
                             grid-template-columns: repeat(2, 1fr);
                             margin: 30px 20px;
                         }
-
                     }
 
                     @media screen and (max-width: 700px) {
                         .infoSection {
                             grid-template-columns: 1fr;
                             margin: 30px 20px;
+                        }
+                    }
+                `}</style>
+
+                <style global jsx>{`
+                    @media screen and (max-width: 900px) {
+                        .collectionBar {
+                            display: none;
                         }
                     }
                 `}</style>
